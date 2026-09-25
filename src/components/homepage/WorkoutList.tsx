@@ -13,7 +13,7 @@ const WorkoutList = async () => {
   return (
     <section id="library" className="container mx-auto px-4 md:px-10 py-12">
       <div className="mb-8">
-        <h2 className="text-3xl md:text-4xl font-black uppercase text-white tracking-tight">
+        <h2 className="font-oswald text-3xl md:text-4xl font-black uppercase text-white tracking-tight">
           THE LIBRARY
         </h2>
         <p className="text-slate-400 text-sm md:text-base mt-1">

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IWorkout } from "@/types/workoutTypes";
 import { FiClock } from "react-icons/fi";
-import { FaFire } from "react-icons/fa";
+import { FaFire, FaRegStar } from "react-icons/fa";
 
 interface WorkoutCardProps {
   workout: IWorkout;
@@ -10,63 +10,58 @@ interface WorkoutCardProps {
 
 const WorkoutListCard = ({ workout }: WorkoutCardProps) => {
   return (
-    <div className="bg-[#0e1117] border border-[#1b212d] hover:border-slate-700/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-xl">
-      <div className="relative w-full h-52 bg-slate-900 overflow-hidden">
+    <Link
+      href={`/workouts/${workout.id}`}
+      className="group bg-[#121620] border border-slate-800/80 hover:border-slate-700 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-lg cursor-pointer"
+    >
+      <div className="relative w-full h-48 bg-slate-900 overflow-hidden">
         <Image
           src={workout.image}
           alt={workout.name}
           fill
           unoptimized
-          className="object-cover hover:scale-105 transition-transform duration-500"
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
 
-      <div className="p-5 flex flex-col flex-grow justify-between">
+      <div className="p-4 flex flex-col flex-grow justify-between">
         <div>
-          <div className="flex flex-wrap gap-2 mb-3">
+          <div className="flex flex-wrap gap-1.5 mb-2.5">
             {workout.muscleGroups.map((muscle) => (
               <span
                 key={muscle}
-                className="bg-[#ccff00] text-black text-[11px] font-black uppercase px-2.5 py-0.5 rounded-full tracking-wide"
+                className="bg-[#ccff00] text-black text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full tracking-wide"
               >
                 {muscle}
               </span>
             ))}
           </div>
 
-          <h3 className="text-xl font-extrabold text-white uppercase tracking-tight mb-2">
+          <h3 className="font-oswald text-xl font-bold uppercase text-white tracking-wide group-hover:text-[#ccff00] transition-colors leading-tight mb-1">
             {workout.name}
           </h3>
 
-          <p className="text-slate-400 text-xs sm:text-sm line-clamp-2 mb-4 leading-relaxed">
-            {workout.description}
+          <p className="text-slate-400 text-xs font-normal mb-3">
+            {workout.equipment}
           </p>
         </div>
 
-        <div>
-          <div className="flex items-center justify-between text-xs text-slate-300 font-semibold border-t border-slate-800/80 pt-3 mb-4">
-            <span className="flex items-center gap-1.5 text-slate-400">
-              <FiClock className="text-[#ccff00]" />
-              {workout.duration} mins
-            </span>
-            <span className="flex items-center gap-1.5 text-slate-400">
-              <FaFire className="text-orange-400" /> {workout.caloriesBurned}{" "}
-              kcal
-            </span>
-            <span className="text-[11px] uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-bold">
-              {workout.difficulty}
-            </span>
-          </div>
-
-          <Link
-            href={`/workouts/${workout.id}`}
-            className="block text-center w-full bg-[#161a22] hover:bg-[#ccff00] hover:text-black text-slate-200 font-bold py-2.5 rounded-lg text-xs uppercase tracking-wider transition-colors duration-200"
-          >
-            VIEW EXERCISE
-          </Link>
+        <div className="flex items-center gap-4 text-xs text-slate-400 font-medium border-t border-slate-800/60 pt-3 mt-1">
+          <span className="flex items-center gap-1.5">
+            <FiClock className="text-slate-400 text-sm" />
+            {workout.duration} min
+          </span>
+          <span className="flex items-center gap-1.5">
+            <FaFire className="text-slate-400 text-sm" />
+            {workout.caloriesBurned} kcal
+          </span>
+          <span className="flex items-center gap-1.5">
+            <FaRegStar className="text-slate-400 text-sm" />
+            {workout.rating}
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

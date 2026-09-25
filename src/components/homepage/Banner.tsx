@@ -12,9 +12,10 @@ const Banner = () => {
             WORKOUT LIBRARY
           </span>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight leading-tight mb-4">
-            TRAIN WITH INTENT. <br className="hidden sm:inline" />
-            LOG EVERY SET.
+          <h1 className="font-oswald text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight leading-tight mb-4">
+            TRAIN WITH INTENT. LOG
+            <br className="hidden sm:inline" />
+            EVERY SET.
           </h1>
 
           <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-xl mb-8">
