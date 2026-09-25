@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FiArrowDown } from "react-icons/fi";
 import bannerImg from "@/assets/banner.png";
 
 const Banner = () => {
@@ -33,7 +32,6 @@ const Banner = () => {
             className="inline-flex items-center gap-2.5 bg-[#ccff00] hover:bg-[#b8e600] text-black font-extrabold px-6 py-3 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all duration-200 shadow-lg shadow-[#ccff00]/10 hover:shadow-[#ccff00]/20 active:scale-95"
           >
             <span>BROWSE WORKOUTS</span>
-            <FiArrowDown className="text-base stroke-[3]" />
           </Link>
         </div>
 
