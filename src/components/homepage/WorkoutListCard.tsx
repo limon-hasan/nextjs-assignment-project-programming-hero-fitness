@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IWorkout } from "@/types/workoutTypes";
-import { FiClock, FiFlame } from "react-icons/fi";
+import { FiClock } from "react-icons/fi";
+import { FaFire } from "react-icons/fa";
 
 interface WorkoutCardProps {
   workout: IWorkout;
@@ -26,7 +27,7 @@ const WorkoutListCard = ({ workout }: WorkoutCardProps) => {
             {workout.muscleGroups.map((muscle) => (
               <span
                 key={muscle}
-                className="bg-[#ccff00] text-black text-[11px] font-black uppercase px-2.5 py-0.5 rounded tracking-wide"
+                className="bg-[#ccff00] text-black text-[11px] font-black uppercase px-2.5 py-0.5 rounded-full tracking-wide"
               >
                 {muscle}
               </span>
@@ -49,8 +50,8 @@ const WorkoutListCard = ({ workout }: WorkoutCardProps) => {
               {workout.duration} mins
             </span>
             <span className="flex items-center gap-1.5 text-slate-400">
-              <FiFlame className="text-orange-400" />
-              {workout.caloriesBurned} kcal
+              <FaFire className="text-orange-400" /> {workout.caloriesBurned}{" "}
+              kcal
             </span>
             <span className="text-[11px] uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-bold">
               {workout.difficulty}
