@@ -1,7 +1,6 @@
 import { IWorkout } from "@/types/workoutTypes";
 import Image from "next/image";
-import { FiCalendar, FiBookmark } from "react-icons/fi";
-import { FaDumbbell } from "react-icons/fa";
+// import { FaDumbbell } from "react-icons/fa";
 import TodaysPlan from "@/components/workout-details/TodaysPlan";
 import SavedLater from "@/components/workout-details/SavedLater";
 

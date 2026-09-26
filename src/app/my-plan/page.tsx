@@ -9,7 +9,7 @@ import { FiClock, FiStar, FiX, FiCheck } from "react-icons/fi";
 import { toast } from "react-toastify";
 
 const MyPlanPage = () => {
-  const { todaysPlan, setTodaysPlan, savedLater, setSavedLater } =
+  const { todaysPlan, setTodaysPlan, savedLater, setSavedLater, loading } =
     useContext(WorkoutContext);
   const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">(
     "duration",
@@ -61,6 +61,16 @@ const MyPlanPage = () => {
     }
     toast.success(`${name} completed! Great job! 🎉`);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#08090c] text-white flex items-center justify-center">
+        <p className="font-oswald text-xl tracking-wider text-slate-400 animate-pulse">
+          Loading workouts...
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#08090c] text-white py-10 px-4 md:px-12 flex flex-col justify-between">
