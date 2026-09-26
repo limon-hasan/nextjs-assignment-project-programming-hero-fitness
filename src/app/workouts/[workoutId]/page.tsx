@@ -2,6 +2,8 @@ import { IWorkout } from "@/types/workoutTypes";
 import Image from "next/image";
 import { FiCalendar, FiBookmark } from "react-icons/fi";
 import { FaDumbbell } from "react-icons/fa";
+import TodaysPlan from "@/components/workout-details/TodaysPlan";
+import SavedLater from "@/components/workout-details/SavedLater";
 
 const getWorkouts = async (): Promise<IWorkout[]> => {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
@@ -113,14 +115,16 @@ const WorkoutDetailsPage = async ({
             </div>
 
             <div className="flex flex-wrap items-center gap-3 pt-1">
-              <button className="bg-[#ccff00] hover:bg-[#b5e600] text-black text-xs font-extrabold px-4 py-2.5 rounded-lg flex items-center gap-2 transition-colors cursor-pointer">
+              {/* <button className="bg-[#ccff00] hover:bg-[#b5e600] text-black text-xs font-extrabold px-4 py-2.5 rounded-lg flex items-center gap-2 transition-colors cursor-pointer">
                 <FiCalendar className="text-sm stroke-[2.5]" />
                 Add to today&apos;s plan
-              </button>
-              <button className="bg-transparent hover:bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium px-4 py-2.5 rounded-lg flex items-center gap-2 transition-colors cursor-pointer">
+              </button> */}
+              <TodaysPlan workout={workout} />
+              {/* <button className="bg-transparent hover:bg-slate-900 border border-slate-800 text-slate-200 text-xs font-medium px-4 py-2.5 rounded-lg flex items-center gap-2 transition-colors cursor-pointer">
                 <FiBookmark className="text-sm" />
                 Save for later
-              </button>
+              </button> */}
+              <SavedLater workout={workout} />
             </div>
           </div>
         </div>
