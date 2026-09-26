@@ -15,7 +15,7 @@ const SavedLater = ({ workout }: ITodaysPlanProps) => {
     const isAlredySaved = savedLater.some((item) => item.id === workout.id);
     if (isAlredySaved) {
       console.log("Already added, duplicate prevented:", workout.name);
-      toast.info(`${workout.name} is already saved!`);
+      toast.warning(`${workout.name} is already saved!`);
       return;
     }
     console.log("Saved later button triggered", workout);

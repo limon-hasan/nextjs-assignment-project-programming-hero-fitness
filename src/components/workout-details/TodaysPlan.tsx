@@ -19,7 +19,7 @@ const TodaysPlan = ({ workout }: ITodaysPlanProps) => {
     );
     if (isAlreadyTodaysPlan) {
       console.log("Already added, duplicate prevented:", workout.name);
-      toast.info(`${workout.name} is in already Todays plan!`);
+      toast.warning(`${workout.name} is in already Todays plan!`);
       return;
     }
     console.log("Todays play button triggered", workout);
