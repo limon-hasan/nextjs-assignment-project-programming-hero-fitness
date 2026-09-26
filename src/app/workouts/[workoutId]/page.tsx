@@ -6,7 +6,7 @@ import TodaysPlan from "@/components/workout-details/TodaysPlan";
 import SavedLater from "@/components/workout-details/SavedLater";
 
 const getWorkouts = async (): Promise<IWorkout[]> => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+  const res = await fetch("https://api.api-store.workers.dev/api/fitlog");
   const data = await res.json();
   return data;
 };
