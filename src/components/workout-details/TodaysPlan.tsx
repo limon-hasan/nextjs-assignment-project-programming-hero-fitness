@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { WorkoutContext } from "@/context/WorkoutContext";
 import { IWorkout } from "@/types/workoutTypes";
@@ -14,6 +14,14 @@ const TodaysPlan = ({ workout }: ITodaysPlanProps) => {
   // console.log("Todays plan button refreshed");
   const { todaysPlan, setTodaysPlan } = useContext(WorkoutContext);
   const handleWorkout = () => {
+    const isAlreadyTodaysPlan = todaysPlan.some(
+      (item) => item.id === workout.id,
+    );
+    if (isAlreadyTodaysPlan) {
+      console.log("Already added, duplicate prevented:", workout.name);
+      toast.info(`${workout.name} is in already Todays plan!`);
+      return;
+    }
     console.log("Todays play button triggered", workout);
     setTodaysPlan([...todaysPlan, workout]);
     toast.success(`${workout.name} have already added!`);
