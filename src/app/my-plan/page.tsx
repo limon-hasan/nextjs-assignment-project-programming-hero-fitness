@@ -11,10 +11,27 @@ import { toast } from "react-toastify";
 const MyPlanPage = () => {
   const { todaysPlan, setTodaysPlan, savedLater, setSavedLater } =
     useContext(WorkoutContext);
+  const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">(
+    "duration",
+  );
+  const sortedWorkout = (workouts: IWorkout[]) => {
+    const sortWorksout = [...workouts];
+    if (sortBy === "duration") {
+      sortWorksout.sort((a, b) => a.duration - b.duration);
+    } else if (sortBy === "calories") {
+      sortWorksout.sort((a, b) => b.caloriesBurned - a.caloriesBurned);
+    } else sortWorksout.sort((a, b) => b.rating - a.rating);
+
+    return sortWorksout;
+  };
+
+  const sortedTodaysPlan = sortedWorkout(todaysPlan);
+  const sortedSavedLater = sortedWorkout(savedLater);
 
   const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
 
-  const currentList = activeTab === "today" ? todaysPlan : savedLater;
+  const currentList =
+    activeTab === "today" ? sortedTodaysPlan : sortedSavedLater;
 
   const totalExercises = currentList.length;
   const totalMinutes = currentList.reduce(
@@ -78,7 +95,7 @@ const MyPlanPage = () => {
           </div>
         </div>
 
-        <div className="mb-6">
+        <div className="flex items-center justify-between gap-4 mb-6">
           <div className="inline-flex items-center bg-[#0d1017] border border-slate-800/80 p-1 rounded-xl">
             <button
               onClick={() => setActiveTab("today")}
@@ -100,6 +117,21 @@ const MyPlanPage = () => {
             >
               Saved
             </button>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-slate-400">Sort By</span>
+            <select
+              value={sortBy}
+              onChange={(e) =>
+                setSortBy(e.target.value as "duration" | "calories" | "rating")
+              }
+              className="select select-sm bg-[#0d1017] text-white border border-slate-800 focus:outline-none focus:border-[#ccff00] text-xs rounded-xl"
+            >
+              <option value="duration">Duration</option>
+              <option value="calories">Calories</option>
+              <option value="rating">Rating</option>
+            </select>
           </div>
         </div>
 
